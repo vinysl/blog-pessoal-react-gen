@@ -1,5 +1,9 @@
 import homeLogo from '../../assets/home-blog-pessoal.svg'
 import './Home.css';
+import ListaPostagens from '../../components/posts/listaPostagens/ListaPostagens';
+import ModalPostagem from '../../components/posts/modalPostagem/ModalPostagem';
+
+
 
 function Home() {
     return (
@@ -11,7 +15,7 @@ function Home() {
                         <p className='text-xl'>Expresse aqui seus pensamentos e opniões</p>
 
                         <div className="flex justify-around gap-4">
-
+                            <ModalPostagem />
                             <button className='rounded bg-white text-blue-800 py-2 px-4'>Ver postagens</button>
                         </div>
                     </div>
@@ -22,7 +26,7 @@ function Home() {
                     </div>
                 </div>
             </div>
-
+            <ListaPostagens />
         </>
     );
 }
