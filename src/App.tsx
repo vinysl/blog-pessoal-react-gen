@@ -1,24 +1,28 @@
 import './App.css';
-
-import Navbar from './components/navBar/NavBar';
-import Footer from './components/footer/Footer';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './pages/login/Login';
-import Cadastro from './pages/register/Cadastro';
-import Home from './pages/home/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import { ToastContainer } from 'react-toastify';
+import Cadastro from './pages/register/Cadastro';
+import Navbar from './components/navBar/NavBar';
+import Home from './pages/home/Home';
+import Footer from './components/footer/Footer';
 import ListaTemas from './components/themes/listaTemas/ListaTemas';
 import FormularioTema from './components/themes/formularioTema/FormularioTema';
 import DeletarTema from './components/themes/deletarTema/DeletarTema';
 import ListaPostagens from './components/posts/listaPostagens/ListaPostagens';
 import FormularioPostagem from './components/posts/formularioPostagem/FormularioPostagem';
+
+import Perfil from './pages/profile/Perfil';
 import DeletarPostagem from './components/posts/deletarPostagem/DeletarPostagem';
 
-
 function App() {
+
   return (
     <>
       <AuthProvider>
+        <ToastContainer />
         <BrowserRouter>
           <Navbar />
           <div className='min-h-[80vh]'>
@@ -35,6 +39,7 @@ function App() {
               <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
               <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
               <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+              <Route path="/perfil" element={<Perfil />} />
             </Routes>
           </div>
           <Footer />
@@ -43,4 +48,5 @@ function App() {
     </>
   );
 }
+
 export default App;

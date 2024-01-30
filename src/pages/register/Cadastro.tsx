@@ -6,6 +6,7 @@ import { cadastrarUsuario } from '../../services/Services'
 import Usuario from '../../models/Usuario'
 
 import './Cadastro.css'
+import { toastAlerta } from '../../util/toastAlerta'
 
 function Cadastro() {
 
@@ -77,14 +78,14 @@ function Cadastro() {
             try {   // Tenta fazer a requisição, e se houver erro impede que a aplicação pare
 
                 await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario)  // Esperamos que a Service cadastrarUsuario() finalize a sua requisição
-                alert('Usuário cadastrado com sucesso')                             // Avisa ao usuário que deu bom
+                toastAlerta('Usuário cadastrado com sucesso', 'sucesso')                             // Avisa ao usuário que deu bom
 
             } catch (error) {
-                alert('Erro ao cadastrar o Usuário')                                // Avisa ao usuário que deu ruim
+                toastAlerta('Erro ao cadastrar o Usuário', 'erro')                                // Avisa ao usuário que deu ruim
             }
 
         } else {
-            alert('Dados inconsistentes. Verifique as informações de cadastro.')    // Se as senhas forem < do que 8 ou forem difernetes
+            toastAlerta('Dados inconsistentes. Verifique as informações de cadastro.', 'erro')    // Se as senhas forem < do que 8 ou forem difernetes
             setUsuario({ ...usuario, senha: "" })   // Apaga a senha digitada
             setConfirmaSenha("")                    // Apaga a senha digitada
         }
